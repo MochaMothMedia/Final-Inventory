@@ -1,3 +1,17 @@
 {
-	"name": "_FedoraDev.FinalInventory.Implementations"
+    "name": "_FedoraDev.FinalInventory.Implementations",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e644df6b24d75734f96201c716fa5acc",
+        "GUID:21d7d4dbd3e2d9542bfedbebe7a6e7f5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
