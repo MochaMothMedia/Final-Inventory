@@ -1,7 +1,6 @@
 public interface IInventory
 {
     int MaxCount { get; }
-    int StorageCount { get; }
 
     void Swap(int index1, int index2);
     
@@ -13,7 +12,8 @@ public interface IInventory
     IStorable GetSpecific(IStorable storable, int quantity = 1);
 
     int GetQuantity(IStorable storable);
-    int HasAvailableSpaceFor(IStorable storable);
+
+    bool HasAvailableSpaceFor(IStorable storable);
 
     void ClearInventory();
 }

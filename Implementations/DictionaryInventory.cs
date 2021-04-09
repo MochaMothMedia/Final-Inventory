@@ -17,7 +17,8 @@ public class DictionaryInventory : IInventory
 	public IStorable ProbeAtPosition(int index) => throw new System.NotImplementedException();
 
 	public int GetQuantity(IStorable storable) => throw new System.NotImplementedException();
-	public int HasAvailableSpaceFor(IStorable storable) => throw new System.NotImplementedException();
+
+	public bool HasAvailableSpaceFor(IStorable storable) => throw new System.NotImplementedException();
 
 	public void ClearInventory() => throw new System.NotImplementedException();
 }
