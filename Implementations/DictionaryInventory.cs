@@ -4,10 +4,30 @@ using UnityEngine;
 
 public class DictionaryInventory : IInventory
 {
-	public int MaxCount => throw new System.NotImplementedException();
-	public int StorageCount => throw new System.NotImplementedException();
+	public int MaxCount => _maxCount;
 
-	public void Swap(int index1, int index2) => throw new System.NotImplementedException();
+	[SerializeField] int _maxCount = 32;
+	[SerializeField] Dictionary<int, IStorable> _storage = new Dictionary<int, IStorable>();
+
+	#region IInventory Implementation
+	public void Swap(int index1, int index2)
+	{
+		if (index1 >= MaxCount && index2 >= MaxCount) return;
+
+		if (_storage.ContainsKey(index1) && _storage.ContainsKey(index2))
+		{
+			IStorable cachedStorable = _storage[index1];
+			_storage[index1] = _storage[index2];
+			_storage[index2] = cachedStorable;
+			return;
+		}
+
+		int largeIndex = index1 < index2 ? index2 : index1;
+		int smallIndex = index1 < index2 ? index1 : index2;
+
+		_storage[smallIndex] = _storage[largeIndex];
+		_storage.Remove(largeIndex);
+	}
 
 	public IStorable AddAllOrFail(IStorable storable) => throw new System.NotImplementedException();
 	public IStorable AddAndReturnRemainder(IStorable storable) => throw new System.NotImplementedException();
@@ -21,4 +41,5 @@ public class DictionaryInventory : IInventory
 	public bool HasAvailableSpaceFor(IStorable storable) => throw new System.NotImplementedException();
 
 	public void ClearInventory() => throw new System.NotImplementedException();
+	#endregion
 }

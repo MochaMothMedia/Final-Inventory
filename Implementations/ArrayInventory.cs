@@ -22,8 +22,7 @@ public class ArrayInventory : IInventory
 	#region IInventory Implementation
 	public void Swap(int index1, int index2)
 	{
-		if (index1 >= _storage.Count && index2 >= _storage.Count)
-			return;
+		if (index1 >= _storage.Count && index2 >= _storage.Count) return;
 
 		IStorable cachedStorable;
 

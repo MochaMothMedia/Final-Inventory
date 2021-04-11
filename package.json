@@ -1,0 +1,7 @@
+{
+  "name": "com.fedoradev.finalinventory",
+  "displayName": "Final Inventory",
+  "version": "0.0.1",
+  "unity": "2020.3",
+  "description": "A lightweight and extendable inventory system."
+}
