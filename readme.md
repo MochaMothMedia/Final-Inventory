@@ -15,9 +15,9 @@ In Unity's Package Manager, you can add the repo as a git package. I have been a
 ###### Manual Installation
 Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually.
 
-Next, you need to add a reference to this repo to your project's `Packages/manifest.json` file.
+You just need to add a reference to this repo to your project's `Packages/manifest.json` file.
 
-```
+```js
 {
     "dependencies": {
         ...,
