@@ -4,15 +4,18 @@ A lightweight and extendible inventory system for Unity.
 
 ## Installation
 
-###### Prerequisites
+#### Prerequisites
 This project uses [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041), which I cannot redistribute. If you don't own Odin Inspector, I would highly recommend purchasing it otherwise you won't be able to serialize interface instances as members which completely breaks this solution.
 
 Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
 
-###### Package Manager
-In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method, however you can't grab a specific version this way and will always be stuck using the latest release. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically.
+#### Package Manager
+In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method, however you can't grab a specific version this way and will always be stuck using the latest release. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically. If you do want a specific version, you can append `#version` to the end of the link. e.g. `#1.0.2`.
 
-###### Manual Installation
+#### UPM Upgrade
+If you are content keeping the latest version, you can add [UnityGitPackageUpdater](https://github.com/QuantumCalzone/UnityGitPackageUpdater)  via `https://github.com/QuantumCalzone/UnityGitPackageUpdater.git#upm` as well. This gives Unity an extra window under `Window > Package Updater` where you can easily update any git packages in your project.
+
+#### Manual Installation
 Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually.
 
 You just need to add a reference to this repo to your project's `Packages/manifest.json` file. Be sure to switch `[version]` with whichever release you would prefer, e.g. `.git#1.0.2`.
@@ -28,15 +31,15 @@ You just need to add a reference to this repo to your project's `Packages/manife
 
 After Unity reloads, you can open the TestRunner window `Window > General > Test Runner` and `Run All` to ensure everything works properly.
 
-###### Manual Upgrade
+#### Manual Upgrade
 After installing manually, you have to change both `Packages/manifest.json` and `Packages/packages-lock.json`. In the former, simply update the dependency with the version you wish to pull. In the lock file, you need to remove the entry for the package. This entry is a few lines long and everything needs to be deleted, including the curly braces. After this is successfully completed, moving back to Unity will force the application to download the desired version.
 
 ## Usage
 ### Inventory
-###### Scriptable Object Asset
+#### Scriptable Object Asset
 Using the asset create menu, use `Create/Inventory` to create an asset. You can then assign the type of inventory and fill it in the inspector. This asset will store anything that implements `IInventory` so you can create your own implementations and the asset can be switched to them.
 
-###### Adding references
+#### Adding references
 
 If you're using `asmdef` files, you should only need to reference `_FedoraDev.FinalInventory`. You can reference `_FedoraDev.FinalInventory.Implementations` as well, however this will create hard dependencies and isn't the intended way to use this system.
 
@@ -53,7 +56,7 @@ public class MyGameObject : SerializedMonoBehaviour
 }
 ```
 
-###### Custom IInventory Implementations
+#### Custom IInventory Implementations
 If you're looking to create your own `IInventory` implementations, your class should implement the following. After creating this implementation, all instances of `IInventory`, including the default `Scriptable Object` asset can be assigned your implementation. Note that functions that take an `IStorable` with no parameter for quantity will use the quantity in the `IStorable`. This is useful depending on how your `IStorable` implements `IsSameAs()`. You can create an instance of `IStorable` at runtime with a desired quantity in `StackCount` and pass that object into these functions.
 
 ```c#
