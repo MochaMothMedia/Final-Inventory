@@ -15,13 +15,13 @@ In Unity's Package Manager, you can add the repo as a git package. I have been a
 ###### Manual Installation
 Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually.
 
-You just need to add a reference to this repo to your project's `Packages/manifest.json` file.
+You just need to add a reference to this repo to your project's `Packages/manifest.json` file. Be sure to switch `[version]` with whichever release you would prefer, e.g. `1.0.2`.
 
 ```js
 {
     "dependencies": {
         ...,
-        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#1.0.2"
+        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#[version]"
     }
 }
 ```
