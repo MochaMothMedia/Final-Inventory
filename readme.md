@@ -4,13 +4,16 @@ A lightweight and extendible inventory system for Unity.
 
 ## Installation
 
+###### Prerequisites
+This project uses [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041), which I cannot redistribute. If you don't own Odin Inspector, I would highly recommend purchasing it otherwise you won't be able to serialize interface instances as members which completely breaks this solution.
+
+Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
+
 ###### Package Manager
 In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method, however you can't grab a specific version this way and will always be stuck using the latest release. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically.
 
 ###### Manual Installation
-Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually. Please ensure Odin Inspector is in your project. If you don't own Odin Inspector, I would highly recommend purchasing it otherwise you won't be able to serialize interface instances as members which completely breaks this solution.
-
-Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
+Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually.
 
 Next, you need to add a reference to this repo to your project's `Packages/manifest.json` file.
 
