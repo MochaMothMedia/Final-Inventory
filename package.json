@@ -1,7 +1,12 @@
 {
-  "name": "com.fedoradev.finalinventory",
-  "displayName": "Final Inventory",
-  "version": "0.0.1",
-  "unity": "2020.3",
-  "description": "A lightweight and extendable inventory system."
+	"name": "com.fedoradev.finalinventory",
+	"displayName": "Final Inventory",
+	"version": "1.0.0",
+	"unity": "2020.3",
+	"unityRelease": "2f1",
+	"description": "A lightweight and extendable inventory system.",
+	"author": {
+		"name": "Jimmy Satterfield (Fedora Dev)",
+		"email": "fedora.game.dev@gmail.com"
+	}
 }
