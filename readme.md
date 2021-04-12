@@ -19,10 +19,10 @@ Next, you need to add a reference to this repo to your project's `Packages/manif
 
 ```
 {
-  "dependencies": {
-    ...,
-    "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#1.0.2"
-  }
+    "dependencies": {
+        ...,
+        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#1.0.2"
+    }
 }
 ```
 
@@ -49,7 +49,7 @@ using UnityEngine;
 
 public class MyGameObject : SerializedMonoBehaviour
 {
-  [SerializeField] private IInventory _inventory;
+    [SerializeField] private IInventory _inventory;
 }
 ```
 
@@ -59,38 +59,38 @@ If you're looking to create your own `IInventory` implementations, your class sh
 ```c#
 public class MyInventory : IInventory
 {
-  //Max slots in the inventory
-  int MaxCount { get; set; }
-  
-  //Swaps two indexes
-  void Swap(int index1, int index2) { ... }
-  
-  //Attempt to insert storable at the index
-  IStorable AddAtPosition(IStorable storable, int index) { ... }
-  
-  //Add entire stack, otherwise adds nothing
-  IStorable AddAllOrFail(IStorable storable) { ... }
-  
-  //Add what will fit and return the rest
-  IStorable AddAndReturnRemainder(IStorable storable) { ... }
-  
-  //Returns the IStorable at the index in the inventory
-  IStorable ProbeAtPosition(int index) { ... }
-  
-  //Removes and returns entire IStorable at location
-  IStorable GetStackAt(int index) { ... }
-  
-  //Removes and returns quantity of IStorable from inventory
-  IStorable GetSpecific(IStorable storable, int quantity = 1) { ... }
-  
-  //Returns the quantity of a specific IStorable found in inventory
-  int GetQuantity(IStorable storable) { ... }
-  
-  //Checks if the IStorable will fit in the inventory
-  bool HasAvailableSpaceFor(IStorable storable) { ... }
-  
-  //Wipes the inventory
-  void ClearInventory() { ... }
+    //Max slots in the inventory
+    int MaxCount { get; set; }
+    
+    //Swaps two indexes
+    void Swap(int index1, int index2) { ... }
+    
+    //Attempt to insert storable at the index
+    IStorable AddAtPosition(IStorable storable, int index) { ... }
+    
+    //Add entire stack, otherwise adds nothing
+    IStorable AddAllOrFail(IStorable storable) { ... }
+    
+    //Add what will fit and return the rest
+    IStorable AddAndReturnRemainder(IStorable storable) { ... }
+    
+    //Returns the IStorable at the index in the inventory
+    IStorable ProbeAtPosition(int index) { ... }
+    
+    //Removes and returns entire IStorable at location
+    IStorable GetStackAt(int index) { ... }
+    
+    //Removes and returns quantity of IStorable from inventory
+    IStorable GetSpecific(IStorable storable, int quantity = 1) { ... }
+    
+    //Returns the quantity of a specific IStorable found in inventory
+    int GetQuantity(IStorable storable) { ... }
+    
+    //Checks if the IStorable will fit in the inventory
+    bool HasAvailableSpaceFor(IStorable storable) { ... }
+    
+    //Wipes the inventory
+    void ClearInventory() { ... }
 }
 ```
 
@@ -106,17 +106,17 @@ using UnityEngine;
 
 public class CoolItem : SerializedScriptableObject, IStorable
 {
-  [SerializeField] private int _stackMax;
-  [SerializeField] private int _stackCount;
-  
-  public string Name => name;
-  public int StackMax => _stackMax;
-  public int StackCount { get => _stackCount; set => _stackCount = value; }
-  
-  public bool IsSameAs(IStorable storable)
-  {
-  	CoolItem item = storable as CoolItem;
-  	return (item != null && item.Name == Name);
-  }
+    [SerializeField] private int _stackMax;
+    [SerializeField] private int _stackCount;
+    
+    public string Name => name;
+    public int StackMax => _stackMax;
+    public int StackCount { get => _stackCount; set => _stackCount = value; }
+    
+    public bool IsSameAs(IStorable storable)
+    {
+        CoolItem item = storable as CoolItem;
+        return (item != null && item.Name == Name);
+    }
 }
 ```
