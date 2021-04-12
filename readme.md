@@ -4,6 +4,10 @@ A lightweight and extendible inventory system for Unity.
 
 ## Installation
 
+###### Package Manager
+In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method, however you can't grab a specific version this way and will always be stuck using the latest release. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically.
+
+###### Manual Installation
 Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually. Please ensure Odin Inspector is in your project. If you don't own Odin Inspector, I would highly recommend purchasing it otherwise you won't be able to serialize interface instances as members which completely breaks this solution.
 
 Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
@@ -14,12 +18,15 @@ Next, you need to add a reference to this repo to your project's `Packages/manif
 {
 	"dependencies": {
 		...,
-		"com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#1.0.0"
+		"com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#1.0.2"
 	}
 }
 ```
 
 After Unity reloads, you can open the TestRunner window `Window > General > Test Runner` and `Run All` to ensure everything works properly.
+
+###### Manual Upgrade
+After installing manually, you have to change both `Packages/manifest.json` and `Packages/packages-lock.json`. In the former, simply update the dependency with the version you wish to pull. In the lock file, you need to remove the entry for the package. This entry is a few lines long and everything needs to be deleted, including the curly braces. After this is successfully completed, moving back to Unity will force the application to download the desired version.
 
 ## Usage
 ### Inventory
