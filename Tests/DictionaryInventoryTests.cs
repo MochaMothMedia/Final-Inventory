@@ -5,14 +5,14 @@ using FedoraDev.FinalInventory.Implementations;
 
 namespace FedoraDev.FinalInventory.Tests
 {
-	public class ArrayInventoryTests
+	public class DictionaryInventoryTests
 	{
 		private IInventory _inventory;
 
 		[SetUp]
 		public void Init()
 		{
-			_inventory = new ArrayInventory();
+			_inventory = new DictionaryInventory();
 			_inventory.MaxCount = 32;
 		}
 
@@ -75,8 +75,6 @@ namespace FedoraDev.FinalInventory.Tests
 		[Test]
 		public void Adding_More_Than_Inventory_Can_Hold_Returns_Leftovers()
 		{
-			Assert.AreNotEqual(int.MaxValue, _inventory.MaxCount, "Inventory's MaxCount is 0 and therefore cannot become full.");
-
 			List<IStorable> storables = new List<IStorable>();
 
 			for (int i = 0; i < _inventory.MaxCount + 1; i++)
@@ -106,44 +104,50 @@ namespace FedoraDev.FinalInventory.Tests
 		}
 
 		[Test]
-		public void Swapping_With_Empty_Slot_Moves_Storable_To_End()
+		public void Can_Swap_Slot_With_Empty_Slot()
 		{
-			IStorable storable1 = Substitute.For<IStorable>();
-			IStorable storable2 = Substitute.For<IStorable>();
+			IStorable storable = Substitute.For<IStorable>();
+			_ = _inventory.AddAndReturnRemainder(storable);
 
-			_ = _inventory.AddAndReturnRemainder(storable1);
-			_ = _inventory.AddAndReturnRemainder(storable2);
-
-			Assert.AreSame(storable1, _inventory.ProbeAtPosition(0), "Failed to insert 1st item.");
-			Assert.AreSame(storable2, _inventory.ProbeAtPosition(1), "Failed to insert 2nd item.");
-
-			_inventory.Swap(0, 5);
-
-			Assert.AreSame(storable2, _inventory.ProbeAtPosition(0), "Failed to move 2nd item forward.");
-			Assert.AreSame(storable1, _inventory.ProbeAtPosition(1), "Failed to move 1st item to end.");
-
-			_inventory.Swap(5, 0);
-
-			Assert.AreSame(storable1, _inventory.ProbeAtPosition(0), "Failed to move 1st item forward when index sizes are swapped.");
-			Assert.AreSame(storable2, _inventory.ProbeAtPosition(1), "Failed to move 2nd item to end when index sizes are swapped.");
-		}
-
-		[Test]
-		public void Swapping_With_Other_Slot_Switches_Positions()
-		{
-			IStorable storable1 = Substitute.For<IStorable>();
-			IStorable storable2 = Substitute.For<IStorable>();
-
-			_ = _inventory.AddAndReturnRemainder(storable1);
-			_ = _inventory.AddAndReturnRemainder(storable2);
-
-			Assert.AreSame(storable1, _inventory.ProbeAtPosition(0), "Failed to insert 1st item.");
-			Assert.AreSame(storable2, _inventory.ProbeAtPosition(1), "Failed to insert 2nd item.");
+			Assert.IsNotNull(_inventory.ProbeAtPosition(0));
+			Assert.IsNull(_inventory.ProbeAtPosition(1));
 
 			_inventory.Swap(0, 1);
 
-			Assert.AreSame(storable2, _inventory.ProbeAtPosition(0));
+			Assert.IsNull(_inventory.ProbeAtPosition(0));
+			Assert.IsNotNull(_inventory.ProbeAtPosition(1));
+			Assert.AreSame(storable, _inventory.ProbeAtPosition(1));
+		}
+
+		[Test]
+		public void Can_Swap_Slot_With_Other_Slot()
+		{
+			IStorable storable1 = Substitute.For<IStorable>();
+			IStorable storable2 = Substitute.For<IStorable>();
+
+			_ = _inventory.AddAndReturnRemainder(storable1);
+			_ = _inventory.AddAndReturnRemainder(storable2);
+
+			Assert.IsNotNull(_inventory.ProbeAtPosition(0));
+			Assert.IsNotNull(_inventory.ProbeAtPosition(1));
+
+			_inventory.Swap(0, 1);
+
+			Assert.IsNotNull(_inventory.ProbeAtPosition(0));
+			Assert.IsNotNull(_inventory.ProbeAtPosition(1));
 			Assert.AreSame(storable1, _inventory.ProbeAtPosition(1));
+			Assert.AreSame(storable2, _inventory.ProbeAtPosition(0));
+		}
+
+		[Test]
+		public void Can_Add_Storable_At_Specific_Index()
+		{
+			IStorable storable = Substitute.For<IStorable>();
+
+			_ = _inventory.AddAtPosition(storable, 4);
+
+			Assert.IsNull(_inventory.ProbeAtPosition(0));
+			Assert.AreSame(storable, _inventory.ProbeAtPosition(4));
 		}
 
 		[Test]

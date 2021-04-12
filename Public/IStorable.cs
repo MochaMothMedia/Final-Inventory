@@ -1,8 +1,11 @@
-public interface IStorable
+namespace FedoraDev.FinalInventory
 {
-    string Name { get; }
-    int StackMax { get; }
-    int StackCount { get; set; }
+    public interface IStorable
+    {
+        string Name { get; }
+        int StackMax { get; }
+        int StackCount { get; set; }
 
-    bool IsSameAs(IStorable storable);
+        bool IsSameAs(IStorable storable);
+    }
 }

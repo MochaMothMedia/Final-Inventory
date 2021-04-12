@@ -1,19 +1,22 @@
-public interface IInventory
+namespace FedoraDev.FinalInventory
 {
-    int MaxCount { get; }
+    public interface IInventory
+    {
+        int MaxCount { get; set; }
 
-    void Swap(int index1, int index2);
-    
-    IStorable AddAtPosition(IStorable storable, int index);
-    IStorable AddAllOrFail(IStorable storable);
-    IStorable AddAndReturnRemainder(IStorable storable);
-    IStorable ProbeAtPosition(int index);
-    IStorable GetStackAt(int index);
-    IStorable GetSpecific(IStorable storable, int quantity = 1);
+        void Swap(int index1, int index2);
 
-    int GetQuantity(IStorable storable);
+        IStorable AddAtPosition(IStorable storable, int index);
+        IStorable AddAllOrFail(IStorable storable);
+        IStorable AddAndReturnRemainder(IStorable storable);
+        IStorable ProbeAtPosition(int index);
+        IStorable GetStackAt(int index);
+        IStorable GetSpecific(IStorable storable, int quantity = 1);
 
-    bool HasAvailableSpaceFor(IStorable storable);
+        int GetQuantity(IStorable storable);
 
-    void ClearInventory();
+        bool HasAvailableSpaceFor(IStorable storable);
+
+        void ClearInventory();
+    }
 }
