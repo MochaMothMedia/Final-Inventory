@@ -24,7 +24,7 @@ You just need to add a reference to this repo to your project's `Packages/manife
 {
     "dependencies": {
         ...,
-        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/FinalInventory.git#[version]"
+        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/Final-Inventory.git#[version]"
     }
 }
 ```
