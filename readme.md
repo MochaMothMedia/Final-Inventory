@@ -10,7 +10,7 @@ This project uses [Odin Inspector](https://assetstore.unity.com/packages/tools/u
 Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
 
 #### Package Manager
-In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method, however you can't grab a specific version this way and will always be stuck using the latest release. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically. If you do want a specific version, you can append `#version` to the end of the link. e.g. `#1.0.2`.
+In Unity's Package Manager, you can add the repo as a git package. I have been able to get this to work by using the `https` method. In Github, select `Code > HTTPS` and click on the clip board. Back in Unity, open Package Manager and hit the plus button and select `Add package from git url`. Paste the link there and the package will be added automatically. If you do want a specific version, you can append `#version` to the end of the link. e.g. `#1.0.2`.
 
 #### UPM Upgrade
 If you are content keeping the latest version, you can add [UnityGitPackageUpdater](https://github.com/QuantumCalzone/UnityGitPackageUpdater)  via `https://github.com/QuantumCalzone/UnityGitPackageUpdater.git#upm` as well. This gives Unity an extra window under `Window > Package Updater` where you can easily update any git packages in your project.
