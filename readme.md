@@ -123,3 +123,6 @@ public class CoolItem : SerializedScriptableObject, IStorable
     }
 }
 ```
+
+## Contributing
+Please refer to the [Readme](https://github.com/FedoraDevStudios/How-To-Contribute-Unity) regarding contributing to packages.
