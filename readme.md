@@ -3,31 +3,10 @@
 A lightweight and extendible inventory system for Unity.
 
 ## Installation
+Follow the steps [Here](https://github.com/FedoraDevStudios/Installation-Unity) to add this package to your Unity project using this package's URL.
 
-#### Prerequisites
-This project uses [Odin Inspector](https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041), which I cannot redistribute. If you don't own Odin Inspector, I would highly recommend purchasing it otherwise you won't be able to serialize interface instances as members which completely breaks this solution.
-
+##### NSubstitute
 Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
-
-#### UPM Git Extension
-###### This is recommended
-This open-source UPM extension adds a feature to Unity's built in Package Manager that superpowers Git integration. You will be able to see all available versions of packages and switch them like you would any other asset on the store. Just add the following as a git url to the current package manager. Once Unity finishes compiling, close and reopen the package manager. Once there, you should see a git icon in the uper left. Hitting that will bring up a screen where you can enter a git url, choose a desired version, and install the package. After installing, Package Manager will show a drop down where you can see all available versions. This will also allow you to update down the road.
-
-```https://github.com/mob-sakai/UpmGitExtension.git```
-
-#### Manual Installation
-Unity's Package Manager seems to have issues with git repositories, however this can be added as a dependency to your Unity project manually.
-
-You just need to add a reference to this repo to your project's `Packages/manifest.json` file. Be sure to switch `[version]` with whichever release you would prefer, e.g. `.git#1.0.2`.
-
-```js
-{
-    "dependencies": {
-        ...,
-        "com.fedoradev.finalinventory": "https://github.com/FedoraDevStudios/Final-Inventory.git#[version]"
-    }
-}
-```
 
 After Unity reloads, you can open the TestRunner window `Window > General > Test Runner` and `Run All` to ensure everything works properly.
 
