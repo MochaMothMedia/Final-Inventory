@@ -10,9 +10,6 @@ Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extra
 
 After Unity reloads, you can open the TestRunner window `Window > General > Test Runner` and `Run All` to ensure everything works properly.
 
-#### Manual Upgrade
-After installing manually, you have to change both `Packages/manifest.json` and `Packages/packages-lock.json`. In the former, simply update the dependency with the version you wish to pull. In the lock file, you need to remove the entry for the package. This entry is a few lines long and everything needs to be deleted, including the curly braces. After this is successfully completed, moving back to Unity will force the application to download the desired version.
-
 ## Usage
 ### Inventory
 #### Scriptable Object Asset
