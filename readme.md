@@ -6,7 +6,7 @@ A lightweight and extendible inventory system for Unity.
 Follow the steps [Here](https://github.com/FedoraDevStudios/Installation-Unity) to add this package to your Unity project using this package's URL.
 
 ##### NSubstitute
-Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute). Extract the zip and grab `NSubstitute.dll` and add it to your project `Assets/Plugins` folder.
+Grab [NSubstitute from NuGet](https://www.nuget.org/packages/NSubstitute/2.0.3). Change the filetype from nupkg to zip. Extract the zip and grab `NSubstitute.dll` from `/lib/net45` and add it to your project `Assets/Plugins` folder.
 
 After Unity reloads, you can open the TestRunner window `Window > General > Test Runner` and `Run All` to ensure everything works properly.
 
